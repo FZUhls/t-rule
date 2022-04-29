@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.base.dao.TRuleIndicatorParamItemDao">
+  <resultMap id="BaseResultMap" type="com.example.base.model.TRuleIndicatorParamItem">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="function_name" jdbcType="VARCHAR" property="functionName" />
+    <result column="function_type" jdbcType="VARCHAR" property="functionType" />
+    <result column="param_num" jdbcType="INTEGER" property="paramNum" />
+    <result column="cre_time" jdbcType="TIMESTAMP" property="creTime" />
+    <result column="upd_time" jdbcType="TIMESTAMP" property="updTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, function_name, function_type, param_num, cre_time, upd_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from f_function
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from f_function
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.example.base.model.TRuleIndicatorParamItem" useGeneratedKeys="true">
+    insert into f_function (function_name, function_type, param_num, 
+      cre_time, upd_time)
+    values (#{functionName,jdbcType=VARCHAR}, #{functionType,jdbcType=VARCHAR}, #{paramNum,jdbcType=INTEGER}, 
+      #{creTime,jdbcType=TIMESTAMP}, #{updTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.example.base.model.TRuleIndicatorParamItem" useGeneratedKeys="true">
+    insert into f_function
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="functionName != null">
+        function_name,
+      </if>
+      <if test="functionType != null">
+        function_type,
+      </if>
+      <if test="paramNum != null">
+        param_num,
+      </if>
+      <if test="creTime != null">
+        cre_time,
+      </if>
+      <if test="updTime != null">
+        upd_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="functionName != null">
+        #{functionName,jdbcType=VARCHAR},
+      </if>
+      <if test="functionType != null">
+        #{functionType,jdbcType=VARCHAR},
+      </if>
+      <if test="paramNum != null">
+        #{paramNum,jdbcType=INTEGER},
+      </if>
+      <if test="creTime != null">
+        #{creTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updTime != null">
+        #{updTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.base.model.TRuleIndicatorParamItem">
+    update f_function
+    <set>
+      <if test="functionName != null">
+        function_name = #{functionName,jdbcType=VARCHAR},
+      </if>
+      <if test="functionType != null">
+        function_type = #{functionType,jdbcType=VARCHAR},
+      </if>
+      <if test="paramNum != null">
+        param_num = #{paramNum,jdbcType=INTEGER},
+      </if>
+      <if test="creTime != null">
+        cre_time = #{creTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updTime != null">
+        upd_time = #{updTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.base.model.TRuleIndicatorParamItem">
+    update f_function
+    set function_name = #{functionName,jdbcType=VARCHAR},
+      function_type = #{functionType,jdbcType=VARCHAR},
+      param_num = #{paramNum,jdbcType=INTEGER},
+      cre_time = #{creTime,jdbcType=TIMESTAMP},
+      upd_time = #{updTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
