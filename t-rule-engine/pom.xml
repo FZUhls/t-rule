@@ -9,16 +9,11 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>t-rule-base</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>t-rule-dao</module>
-    </modules>
+    <artifactId>t-rule-engine</artifactId>
 
     <properties>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
     </properties>
-
 
 </project>
